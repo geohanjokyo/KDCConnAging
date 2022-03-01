@@ -37,7 +37,7 @@ class ConnAging(unittest.TestCase):
         wait = WebDriverWait(driver, 20)
         # 테스트 시나리오에 따라 selenium 작성
         sleep(5)
-        for i > 1
+
         # disconnect 버튼 누름
         el = self.driver.find_element_by_xpath(
             "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.LinearLayout[2]/android.widget.TextView[5]")
@@ -58,7 +58,7 @@ class ConnAging(unittest.TestCase):
         conn_stat = el.text
         print(conn_Stat)
         #conn_stat_slice = conn_stat[]
-        if
+        #if
 
     sleep(20)
     # 이후 테스트 시나리오 추가 가능
