@@ -16,7 +16,6 @@ class ConnAging(unittest.TestCase):
 
     def setUp(self):
         # Set up appium
-
         self.driver = webdriver.Remote(
             command_executor='http://localhost:4723/wd/hub',
             desired_capabilities={
@@ -61,13 +60,10 @@ class ConnAging(unittest.TestCase):
                 s = s+1
             else:
                 f = f+1
+            #IDE 콘솔창에 결과 출력
             print("연결성공 " + str(s) + "회" + " / " + "연결실패 " + str(f) + "회")
 
 
-
-
-
-    # 이후 테스트 시나리오 추가 가능
 
 
 def tearDown(self):
