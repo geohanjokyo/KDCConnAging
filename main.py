@@ -36,31 +36,36 @@ class ConnAging(unittest.TestCase):
         # selenium의 WebDriverWait을 사용합니다. element가 나올때 까지 최고 20초까지 기다립니다.
         wait = WebDriverWait(driver, 20)
         # 테스트 시나리오에 따라 selenium 작성
-        sleep(5)
+        sleep(10)
+        s = 0
+        f = 0
 
-        # disconnect 버튼 누름
-        el = self.driver.find_element_by_xpath(
-            "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.LinearLayout[2]/android.widget.TextView[5]")
-        el.click();
-        sleep(1)
-        # connect 버튼 누름
-        el = self.driver.find_element_by_xpath(
-            "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.LinearLayout[2]/android.widget.TextView[1]")
-        el.click();
-        sleep(1)
-        # 페어링 된 KDC 선택
-        el = self.driver.find_element_by_xpath(
-            "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout")
-        el.click();
-        #5초 대기 후 연결 상태 확인
-        sleep(5)
-        el = self.driver.find_element_by_xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.TextView[2]")
-        conn_stat = el.text
-        print(conn_Stat)
-        #conn_stat_slice = conn_stat[]
-        #if
+        #KDC 연결끊기 - 연결 무한 반복
+        while True:
+            # disconnect 버튼 누름
+            driver.find_element(By.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.LinearLayout[2]/android.widget.TextView[5]").click()
+            sleep(1)
+            # connect 버튼 누름
+            driver.find_element(By.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.LinearLayout[2]/android.widget.TextView[1]").click()
+            sleep(1)
+            # 페어링 된 KDC 선택
+            driver.find_element(By.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout").click()
+            #10초 대기 후 연결 상태 확인
+            sleep(10)
+            conn_stat = driver.find_element(By.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.TextView[2]").text
+            #print(conn_stat)
+            conn = conn_stat[-9:]
+            #print(conn)
+            if conn == "Connected":
+                s = s+1
+            else:
+                f = f+1
+            print("연결성공 " + str(s) + "회" + " / " + "연결실패 " + str(f) + "회")
 
-    sleep(20)
+
+
+
+
     # 이후 테스트 시나리오 추가 가능
 
 
@@ -68,6 +73,6 @@ def tearDown(self):
     self.driver.quit()
 
 
-if __name__ == '__main__':
-    suite = ConnAging.TestLoader().loadTestsFromTestCase(kbdtest)
-    ConnAging.TextTestRunner(verbosity=2).run(suite)
+if __name__ == "__main__":
+    suite = unittest.TestLoader().loadTestsFromTestCase(ConnAging)
+    unittest.TextTestRunner(verbosity=2).run(suite)
