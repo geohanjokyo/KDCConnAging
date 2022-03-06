@@ -88,7 +88,6 @@ class ConnAging(unittest.TestCase):
                 print("bar_da")
                 print(type(bar_da))
                 print(bar_da)
-                print(nm)
 
                 #interal viewer clear
                 driver.find_element(By.XPATH,
