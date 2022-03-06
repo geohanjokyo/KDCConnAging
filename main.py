@@ -66,13 +66,14 @@ class ConnAging(unittest.TestCase):
                 try:
                     #스캔버튼 클릭
                     driver.find_element(By.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.TextView").click()
-                    #스캔 데이터 3초간 대기
+                    #스캔 데이터 대기(3초 기다려도 안나타나면 에러 발생)
                     wait = WebDriverWait(driver, 3)
                     element = wait.until(EC.visibility_of_element_located((By.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout/android.widget.TextView")))
                     scan_da = driver.find_element(By.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout/android.widget.TextView").text
-
+                    #appium으로 땡겨온 text에 이상한값(보이지 않음)이 있어 슬라이싱으로 마지막 2글자를 자름
+                    scan_da_slice = scan_da[0:len(scan_da)-2]
                     #스캔된 바코드 결과값 비교
-                    if scan_da == bar_da:
+                    if scan_da_slice == bar_da:
                         # 데이터 일치하면 스캔성공 증가
                         ss = ss + 1
                     else:
@@ -82,12 +83,18 @@ class ConnAging(unittest.TestCase):
                     #try문 에러 발생시 스캔실패 증가
                     sf = sf + 1
 
-                print("scan_da")
-                print(type(scan_da))
-                print(scan_da)
-                print("bar_da")
-                print(type(bar_da))
-                print(bar_da)
+                # print("scan_da")
+                # print(type(scan_da))
+                # print(scan_da)
+                # #스캔한 데이터 한글자씩 찍기
+                # scan_da_len = len(scan_da)
+                # for i in range(scan_da_len):
+                #     count = i + 1
+                #     print("스캔한 data 중 " + str(count) + "번재 글자 : " + scan_da[i])
+                #     i = i + 1
+                # print("bar_da")
+                # print(type(bar_da))
+                # print(bar_da)
 
                 #interal viewer clear
                 driver.find_element(By.XPATH,
