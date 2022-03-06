@@ -34,11 +34,15 @@ class ConnAging(unittest.TestCase):
         # appiun의 webdriver를 초기화 합니다.
         driver = self.driver
         # selenium의 WebDriverWait을 사용합니다. element가 나올때 까지 최고 20초까지 기다립니다.
-        wait = WebDriverWait(driver, 20)
+        #wait = WebDriverWait(driver, 20)
         # 테스트 시나리오에 따라 selenium 작성
         sleep(10)
-        s = 0
-        f = 0
+        bar_da = "9300647000342"
+        cs = 0 #연결성공 카운트
+        cf = 0 #연결실패 카운드
+        ss = 0 #스캔성공 카운트
+        nm = 0 #스캔데이터 불일치 카운트
+        sf = 0 #스캔실패 카운드
 
         #KDC 연결끊기 - 연결 무한 반복
         while True:
@@ -57,11 +61,43 @@ class ConnAging(unittest.TestCase):
             conn = conn_stat[-9:]
             #print(conn)
             if conn == "Connected":
-                s = s+1
+                cs = cs+1
+                #연결 성공하면 바코드 스캔 동작
+                try:
+                    #스캔버튼 클릭
+                    driver.find_element(By.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.TextView").click()
+                    #스캔 데이터 3초간 대기
+                    wait = WebDriverWait(driver, 3)
+                    element = wait.until(EC.visibility_of_element_located((By.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout/android.widget.TextView")))
+                    scan_da = driver.find_element(By.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout/android.widget.TextView").text
+
+                    #스캔된 바코드 결과값 비교
+                    if scan_da == bar_da:
+                        # 데이터 일치하면 스캔성공 증가
+                        ss = ss + 1
+                    else:
+                        # 데이터 불일치하면 불일치 증가
+                        nm = nm + 1
+                except:
+                    #try문 에러 발생시 스캔실패 증가
+                    sf = sf + 1
+
+                print("scan_da")
+                print(type(scan_da))
+                print(scan_da)
+                print("bar_da")
+                print(type(bar_da))
+                print(bar_da)
+                print(nm)
+
+                #interal viewer clear
+                driver.find_element(By.XPATH,
+                                    "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.LinearLayout[2]/android.widget.TextView[3]").click()
+
             else:
-                f = f+1
+                cf = cf+1
             #IDE 콘솔창에 결과 출력
-            print("연결성공 " + str(s) + "회" + " / " + "연결실패 " + str(f) + "회")
+            print("연결성공 " + str(cs) + "회" +"(스캔성공 " + str(ss) + "회, " + "데이터불일치 " + str(nm) + "회, " + "스캔실패 " + str(sf) + "회" + ")" +" / " + "연결실패 " + str(cf) + "회")
 
 
 
