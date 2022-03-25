@@ -43,9 +43,11 @@ class ConnAging(unittest.TestCase):
         ss = 0 #스캔성공 카운트
         nm = 0 #스캔데이터 불일치 카운트
         sf = 0 #스캔실패 카운드
+        cfc = 0 #연결실패 연속 카운트
 
-        #KDC 연결끊기 - 연결 무한 반복
-        while True:
+        #KDC 연결끊기 - 연결 - 스캔 반복 수행
+        #연결 실패 연속 10회 발생하면 중단
+        while cfc < 10:
             # disconnect 버튼 누름
             driver.find_element(By.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.LinearLayout[2]/android.widget.TextView[5]").click()
             sleep(1)
@@ -79,22 +81,13 @@ class ConnAging(unittest.TestCase):
                     else:
                         # 데이터 불일치하면 불일치 증가
                         nm = nm + 1
+                    cfc = 0
                 except:
                     #try문 에러 발생시 스캔실패 증가
                     sf = sf + 1
+                    cfc = cfc + 1
 
-                # print("scan_da")
-                # print(type(scan_da))
-                # print(scan_da)
-                # #스캔한 데이터 한글자씩 찍기
-                # scan_da_len = len(scan_da)
-                # for i in range(scan_da_len):
-                #     count = i + 1
-                #     print("스캔한 data 중 " + str(count) + "번재 글자 : " + scan_da[i])
-                #     i = i + 1
-                # print("bar_da")
-                # print(type(bar_da))
-                # print(bar_da)
+
 
                 #interal viewer clear
                 driver.find_element(By.XPATH,
@@ -103,7 +96,12 @@ class ConnAging(unittest.TestCase):
             else:
                 cf = cf+1
             #IDE 콘솔창에 결과 출력
-            print("연결성공 " + str(cs) + "회" +"(스캔성공 " + str(ss) + "회, " + "데이터불일치 " + str(nm) + "회, " + "스캔실패 " + str(sf) + "회" + ")" +" / " + "연결실패 " + str(cf) + "회")
+            result = "연결성공 " + str(cs) + "회" +"(스캔성공 " + str(ss) + "회, " + "데이터불일치 " + str(nm) + "회, " + "스캔실패 " + str(sf) + "회" + ")" +" / " + "연결실패 " + str(cf) + "회"
+            print(result)
+            f = open("ConnAgingResult.txt","w")
+            f.write(result)
+            f.close()
+
 
 
 
