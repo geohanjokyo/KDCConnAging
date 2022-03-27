@@ -85,7 +85,7 @@ class ConnAging(unittest.TestCase):
                 except:
                     #try문 에러 발생시 스캔실패 증가
                     sf = sf + 1
-                    cfc = cfc + 1
+
 
 
 
@@ -95,6 +95,7 @@ class ConnAging(unittest.TestCase):
 
             else:
                 cf = cf+1
+                cfc = cfc + 1
             #IDE 콘솔창에 결과 출력
             result = "연결성공 " + str(cs) + "회" +"(스캔성공 " + str(ss) + "회, " + "데이터불일치 " + str(nm) + "회, " + "스캔실패 " + str(sf) + "회" + ")" +" / " + "연결실패 " + str(cf) + "회"
             print(result)
