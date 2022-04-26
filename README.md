@@ -49,13 +49,13 @@ KTSync APP과 KDC 스캐너간 연결 테스트 자동화
 ###  4. 스크립트 Clone
 1. VM 시작
 2. 바탕화면의 **PyCharm** 실행
-3. **Get From VCS** 선택
+3. **Get From VCS** 선택   
 ![enter image description here](https://i.imgur.com/qgzXcQV.jpg)
-4. Git 설치
+4. Git 설치   
 ![enter image description here](https://i.imgur.com/7TkWCky.jpg)
-5. git 주소를 입력 후 clone
+5. git 주소를 입력 후 clone   
 ![enter image description here](https://i.imgur.com/mW40iIF.jpg)
-7. 스크립트 clone 완료된 모습
+7. 스크립트 clone 완료된 모습   
 ![enter image description here](https://i.imgur.com/CSsCaBO.jpg)
 
 
