@@ -40,9 +40,9 @@ KTSync APP과 KDC 스캐너간 연결 테스트 자동화
 ### 3. 안드로이드 디버깅 설정
 1. 설정 > 휴대전화 정보 > 소프트웨어 정보 > 빌드번호를 연타하여 **개발자 모드** 활성화
 ![enter image description here](https://i.imgur.com/y41SPt1.jpg)
-2. **USB 디버깅** 활성화
+2. **USB 디버깅** 활성화   
 ![enter image description here](https://i.imgur.com/2z7YdFs.jpg)
-4. **화면 켜짐상태 유지** 활성화
+4. **화면 켜짐상태 유지** 활성화   
 ![enter image description here](https://i.imgur.com/yi1xerC.jpg)
 
 
