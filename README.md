@@ -84,7 +84,7 @@ KTSync APP과 KDC 스캐너간 연결 테스트 자동화
 	![enter image description here](https://i.imgur.com/0chX50z.jpg)
 	4. Script Path > 폴더 클릭
 	![enter image description here](https://i.imgur.com/rgih9Ge.jpg)
-	5. **main.py** 선택 > OK 클릭
+	5. **main.py** 선택 > OK 클릭   
 	![enter image description here](https://i.imgur.com/0k8rFvm.jpg)
 	6. OK클릭
 	![enter image description here](https://i.imgur.com/6Se72rM.jpg)
@@ -93,7 +93,7 @@ KTSync APP과 KDC 스캐너간 연결 테스트 자동화
 
 ### 6. 스크립트 실행
 1. Appium Server GUI 실행
-2. **Start Server** 클릭
+2. **Start Server** 클릭   
 ![enter image description here](https://i.imgur.com/GRSR2A8.jpg)
 3. PyCharm > RUN 클릭
 ![enter image description here](https://i.imgur.com/MrLBxBD.jpg)
