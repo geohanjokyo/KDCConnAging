@@ -16,7 +16,7 @@ KTSync APP과 KDC 스캐너간 연결 테스트 자동화
 
 ### 2. VirtualBox 이미지 가져오기
 1. VirtualBox 이미지 다운로드
-    다운로드1 : https://drive.google.com/file/d/1iV1K5xS-LWuO9cOriF98ID7nwkFSsnC3/view?usp=sharing
+    다운로드1 : https://drive.google.com/file/d/1iV1K5xS-LWuO9cOriF98ID7nwkFSsnC3/view?usp=sharing   
     다운로드2 : https://drive.google.com/file/d/17vs91xO_aDV9lB2gbdl1dwan6AAC79lj/view?usp=sharing
 2. VirtualBox 실행
 3. 다운로드한 VM 추가
