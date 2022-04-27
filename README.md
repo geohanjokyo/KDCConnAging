@@ -9,7 +9,7 @@ KTSync APP과 KDC 스캐너간 연결 테스트 자동화
 ## 실행 절차
 
 ### 1. VirtualBox 설치
-1. VirtualBox 홈페이지(https://www.virtualbox.org/wiki/Downloads)에 접속
+1. VirtualBox 홈페이지(https://www.virtualbox.org/wiki/Downloads )에 접속
 2. platform packages와 Extension Pack을 다운로드 & 설치
 ![enter image description here](https://i.imgur.com/yAhSQAC.jpg)
 
