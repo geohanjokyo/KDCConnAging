@@ -1,4 +1,4 @@
-﻿# KDC 연결 Test Automation
+# KDC 연결 Test Automation
 
 KTSync APP과 KDC 스캐너간 연결 테스트 자동화
 아래의 스텝과 같이 UI Automation 동작을 수행함
@@ -10,14 +10,14 @@ KTSync APP과 KDC 스캐너간 연결 테스트 자동화
 
 ### 1. VirtualBox 설치
 1. VirtualBox 홈페이지(https://www.virtualbox.org/wiki/Downloads)에 접속
-2. platform packages와 Extension Pack을 다운로드 & 설치   
+2. platform packages와 Extension Pack을 다운로드 & 설치
 ![enter image description here](https://i.imgur.com/yAhSQAC.jpg)
 
 
 ### 2. VirtualBox 이미지 가져오기
 1. VirtualBox 이미지 다운로드   
-    다운로드1 : https://drive.google.com/file/d/1iV1K5xS-LWuO9cOriF98ID7nwkFSsnC3/view?usp=sharing   
-    다운로드2 : https://drive.google.com/file/d/17vs91xO_aDV9lB2gbdl1dwan6AAC79lj/view?usp=sharing
+    다운로드1 : https://drive.google.com/file/d/1vWRoxXmR4BBe5UkHwdXfV5b6wgxtRw9e/view?usp=sharing   
+    다운로드2 : https://drive.google.com/file/d/1ctAurbVctcUSypXrMcTqLd0d2RCbIg8V/view?usp=sharing
 2. VirtualBox 실행
 3. 다운로드한 VM 추가
 	1. **추가** 클릭   
@@ -38,7 +38,7 @@ KTSync APP과 KDC 스캐너간 연결 테스트 자동화
 
 
 ### 3. 안드로이드 디버깅 설정
-1. 설정 > 휴대전화 정보 > 소프트웨어 정보 > 빌드번호를 연타하여 **개발자 모드** 활성화
+1. 설정 > 휴대전화 정보 > 소프트웨어 정보 > 빌드번호를 연타하여 **개발자 모드** 활성화   
 ![enter image description here](https://i.imgur.com/y41SPt1.jpg)
 2. **USB 디버깅** 활성화   
 ![enter image description here](https://i.imgur.com/2z7YdFs.jpg)
@@ -70,6 +70,8 @@ KTSync APP과 KDC 스캐너간 연결 테스트 자동화
 	![enter image description here](https://i.imgur.com/7gpYORU.jpg)
 	4. 실행 결과 출력되는 **장치 id**를 스크립트 **udid**에 입력   
 	![enter image description here](https://i.imgur.com/FnYj5l0.jpg)
+	 5. 테스트할 바코드의 데이터를 **bar_da** 변수에 선언   
+	 ![enter image description here](https://i.imgur.com/UlQf6vh.jpg)
 2. Interpreter 선택
 	1. Pycharm 우측 하단 **No Interpreter** 클릭   
 	![enter image description here](https://i.imgur.com/G7Enoyi.jpg)
@@ -79,7 +81,7 @@ KTSync APP과 KDC 스캐너간 연결 테스트 자동화
 	1. **Add Configuration** 클릭   
 	![enter image description here](https://i.imgur.com/NcrmJwc.jpg)
 	2. ** Add New Configuration** 클릭   
-![enter image description here](https://i.imgur.com/t4h76Z5.jpg)
+	![enter image description here](https://i.imgur.com/t4h76Z5.jpg)
 	3. **Python** 클릭   
 	![enter image description here](https://i.imgur.com/0chX50z.jpg)
 	4. Script Path > 폴더 클릭   
@@ -97,4 +99,3 @@ KTSync APP과 KDC 스캐너간 연결 테스트 자동화
 ![enter image description here](https://i.imgur.com/GRSR2A8.jpg)
 3. PyCharm > RUN 클릭   
 ![enter image description here](https://i.imgur.com/MrLBxBD.jpg)
-
